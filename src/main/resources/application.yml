@@ -1,16 +1,13 @@
 server:
   port: 9001
 spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/oauth2_database?useSSL=false
+  main:
+    allow-bean-definition-overriding: true
+  data-source:
+    url: jdbc:mysql://172.16.100.8:3306/oauth2_database?useSSL=false&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Europe/Berlin
     username: root
-    password: root
+    password:
     driver-class-name: com.mysql.jdbc.Driver
-    tomcat:
-      test-while-idle: true
-      validation-query: SELECT 1
-    initialization-mode: never
-    platform: mysql
   jpa:
     properties:
       hibernate:
@@ -18,6 +15,6 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-      ddl-auto: validate
+      ddl-auto: none
 
 check-user-scopes: true
